@@ -18,7 +18,7 @@ This object will also be used as a BACnet device itself, serving BACnet objects 
 To create a BAC0 object, you will need to use the start() function. This function will create the object and connect it to the network.
 
 .. note :: 
-    Legacy BAC0 was available in 2 flavours : ilte and complete. This is not the case anymore. I have merged the two versions into one. All web services have been deprecated letting other softwares like Grafana or InfluxDB to take care of the trending features.
+    Legacy BAC0 was available in 2 flavours : lite and complete. This is not the case anymore. I have merged the two versions into one. All web services have been deprecated letting other softwares like Grafana or InfluxDB to take care of the trending features.
 
 When creating the connection to the network, BAC0 needs to know the ip network of the interface on which it will work. It also needs to know the subnet mask (as BACnet operations often use broadcast messages).If you don't provide one, BAC0 will try to detect the interface for you.
 
@@ -90,7 +90,7 @@ To do so, use the syntax::
 > using the `deviceId` argument `bacnet = BAC0.start(ip='xxx.xxx.xxx.xxx/mask', deviceId=1234)`.
     
 
-Use BAC0 on a different subnect (Foreign Device)
+Use BAC0 on a different subnet (Foreign Device)
 ***************************************************
 In some situations (like using BAC0 with a VPN using TUN) your BAC0 instance
 will run on a different subnet than the BACnet/IP network.
@@ -157,7 +157,7 @@ Devices dataframe ::
 
     await bacnet.devices
 
-..note::
+.. note::
     WARNING. `await bacnet.devices` may in some circumstances, be a bad choice when you want to discover
     devices on a network. A lot of read requests are made to look for manufacturer, object name, etc
     and if a lot of devices are on the network, it is recommended to use whois() and start from there.
@@ -188,7 +188,7 @@ When reconnecting after being disconnected, a complete rebuild of the device is 
 This way, if the device have changed (a download have been done and point list changed)
 new points will be available. Old one will not.
 
-..note::
+.. note::
     WARNING. When BAC0 disconnects a device, it will try to save the device to SQL.
 
 Routing Table
